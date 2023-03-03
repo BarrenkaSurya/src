@@ -102,45 +102,71 @@ public class Main {
 //............................................................................................................................
 
 //public class quick_Sort {
-    public static void swap(int arr[], int a, int b){
-        int temp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = temp;
-    }
-    public static int findPivotPos(int arr[],int s, int e){
-        int Pivot = arr[e];
-        int i = s-1;
+public static void mergeSort(int arr[],int s, int mid, int e){
+    int n1 = mid-s+1;
+    int n2 = e-mid;
 
-        for(int k=s; k<e; k++){               //{10,8,6,1,5,9,7};
-            if(arr[k] < Pivot){
-                i++;
-                swap(arr,i,k);
-            }
+    int left[] = new int[n1];
+    int right[] = new int[n2];
+
+    for(int i=0; i<n1; i++){
+        left[i] = arr[s+i];
+    }
+    for(int j=0; j<n2; j++){
+        right[j] = arr[j+mid+1];
+    }
+
+    int temp[] = new int[n1+n2];
+    int i=0,j=0,k=0;
+
+    while(i<n1 && j<n2){
+        if(left[i] < right[j]){
+            temp[k] = left[i];
+            i++;
         }
+        else{
+            temp[k] = right[j];
+            j++;
+        }
+        k++;
+    }
+
+    while(i<n1){
+        temp[k] = left[i];
         i++;
-        swap(arr,i,e);
-        return i;
+        k++;
     }
-    public static void quickSort(int arr[], int s, int e){
+    while(j<n2){
+        temp[k] = right[j];
+        j++;
+        k++;
+    }
+    k=0;
+    for(i=0; i<(n1+n2); i++){
+        arr[i+s] = temp[k];
+        k++;
 
+    }
+
+}
+    public static void divide(int arr[], int s, int e){
         if(s<e){
-            int Pos = findPivotPos(arr,s,e);
-            quickSort(arr,s,Pos-1);
-            quickSort(arr,Pos+1,e);
-        }
-    }
-    public static void printArray(int arr[], int n){
-        for(int i=0; i<n; i++){
-            System.out.print(arr[i]+" ");
+            int mid = (s+e)/2;
 
+            divide(arr,s,mid);
+            divide(arr,mid+1,e);
+            mergeSort(arr,s,mid,e);
         }
     }
     public static void main(String[] args){
-        int arr[] = {10,8,6,1,5,9,7};
+        int arr[] = {8,6,9,4,6,5,2,3,1};
         int n = arr.length;
 
-        quickSort(arr,0,n-1);
-        printArray(arr,n);
+        divide(arr,0,n-1);
+
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
     }
 }
 

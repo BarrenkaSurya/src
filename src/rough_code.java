@@ -1,20 +1,17 @@
-package sorting_Algorithm;
 import java.util.*;
-public class Merge_Sort {
-    public static void merge(int arr[], int s, int mid, int e){
-
+public class rough_code {
+    public static void mergeSort(int arr[],int s, int mid, int e){
         int n1 = mid-s+1;
-
-        int n2 = e - mid;
+        int n2 = e-mid;
 
         int left[] = new int[n1];
         int right[] = new int[n2];
+
         for(int i=0; i<n1; i++){
             left[i] = arr[s+i];
         }
-
-        for(int j=0; j<n2; j++){
-            right[j] = arr[mid+1+j];
+        for(int j=0; j<n1; j++){
+            right[j] = arr[j+mid+1];
         }
 
         int temp[] = new int[n1+n2];
@@ -31,6 +28,7 @@ public class Merge_Sort {
             }
             k++;
         }
+
         while(i<n1){
             temp[k] = left[i];
             i++;
@@ -41,10 +39,10 @@ public class Merge_Sort {
             j++;
             k++;
         }
-         k=0;
-        for( i=0; i<(n1+n2); i++){
-            arr[i+s] = temp[k];
-            k++;
+        k=0;
+        for(i=0; i<(n1+n2); i++){
+           arr[i+s] = temp[k];
+           k++;
 
         }
 
@@ -55,11 +53,11 @@ public class Merge_Sort {
 
             divide(arr,s,mid);
             divide(arr,mid+1,e);
-            merge(arr,s,mid,e);
+            mergeSort(arr,s,mid,e);
         }
     }
     public static void main(String[] args){
-        int arr[] = {7,13,5,21,8,3,6};
+        int arr[] = {8,6,9,4,6,5,2,3,1};
         int n = arr.length;
 
         divide(arr,0,n-1);
@@ -68,5 +66,4 @@ public class Merge_Sort {
             System.out.print(arr[i]+" ");
         }
     }
-
 }

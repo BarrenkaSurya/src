@@ -2,7 +2,7 @@ package NewtonSchool_.newtonschool;
 
 import java.util.Scanner;
 
-public class IfElsestatements { 
+/*public class IfElsestatements {
 
 
 	public static void main(String[] args) {
@@ -20,6 +20,6 @@ public class IfElsestatements {
 		
 	}		
         	   
-}
+}*/
 
 
