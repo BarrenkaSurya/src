@@ -16,7 +16,7 @@ public class parenthesis_Stack_Of_Type_2{
             switch(temp){
                 case ')' :
                     topBracket = s.peek();
-                    if(temp == '{' || temp == '['){
+                    if(topBracket == '{' ||topBracket== '['){
                         return false;
                     }
                     s.pop();
@@ -24,7 +24,7 @@ public class parenthesis_Stack_Of_Type_2{
 
                 case ']' :
                     topBracket = s.peek();
-                    if(temp == '{' || temp=='('){
+                    if(topBracket == '{' || topBracket=='('){
                         return false;
                     }
                     s.pop();
@@ -32,7 +32,7 @@ public class parenthesis_Stack_Of_Type_2{
 
                 case '}' :
                      topBracket = s.peek();
-                     if(temp=='[' || temp=='('){
+                     if(topBracket=='[' || topBracket =='('){
                          return false;
                      }
                      s.pop();
