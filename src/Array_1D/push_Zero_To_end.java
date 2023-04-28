@@ -1,7 +1,7 @@
 package Array_1D;
 
 public class push_Zero_To_end {
-    public static void pushZeroToEnd(int arr[], int n){    //interviewed asked question.....IMP
+    public static void pushZeroToEnd(int arr[], int n)       //.....IMP
 
         int j=0;
         for(int i=0; i<n; i++){
